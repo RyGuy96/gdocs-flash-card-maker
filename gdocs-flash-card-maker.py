@@ -12,10 +12,9 @@ from google.auth.transport.requests import Request
 import pandas as pd
 
 """
-    TODO: 
-    Handle multiple tables in one document (e.g. to make multiple sets)
+    TODO:
     Handle tables which have blank cells
-    Handle multiple documents 
+    Handle multiple documents
     Programmatic upload of excel file to flash card services for services who allow (Quizlet specifically prohibits)
     Reverse flow - from flash card to table(s) in docs
 """
@@ -30,7 +29,7 @@ DOCUMENT_ID = '1SqhlKxwm5u0MorUa-EU4GmSa8123njPSkgvXDAdKZTo'
 PATH_TO_OUTPUT = '/Users/ryanlenea/Desktop/foo.xlsx'
 
 
-def getDoc(scopes: list, doc_id: str) -> dict:
+def get_doc(scopes: list, doc_id: str) -> dict:
     """login and get doc info."""
 
     # TODO: accept argument option to not store credentials
@@ -63,13 +62,15 @@ def getDoc(scopes: list, doc_id: str) -> dict:
 def get_table_cells(document: dict) -> list:
     """get all values inside doc table(s)."""
 
-    #TODO: make this less awful with list comp, multiple funcs, etc.
+    #TODO: make this less awful with list comp, multiple funcs, recursion etc.
 
     doc_content = document.get('body').get('content')
 
+    all_tables = []
     for value in doc_content:
         if 'table' in value:
             table = value.get('table')
+            print(table)
 
             full_table = []
             for row in table.get('tableRows'):
@@ -89,7 +90,9 @@ def get_table_cells(document: dict) -> list:
 
                     row_cells += [full_cell_text]
                 full_table += row_cells
-    return  full_table
+            all_tables += full_table
+
+    return  all_tables
 
 def make_term_list(table_elements: list) -> list:
     """convert list-of-strings to list-of-two-string-lists (term and definition)."""
@@ -110,7 +113,7 @@ def to_excl(card_lst: list, out_path: str) -> None:
     df.to_excel(out_path, sheet_name='Sheet1', index=False, header=False)
 
 def main() -> None:
-    document = getDoc(SCOPES, DOCUMENT_ID)
+    document = get_doc(SCOPES, DOCUMENT_ID)
     cells = get_table_cells(document)
     terms = make_term_list(cells)
     to_excl(terms, PATH_TO_OUTPUT)
