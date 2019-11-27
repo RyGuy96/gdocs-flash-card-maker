@@ -1,7 +1,7 @@
 # Gdocs Flash Card Maker
 
 Accesses a docs file in your Google Drive and converts one or more tables in the document into an excel file. This file can be uploaded
-to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create). 
+to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create)). 
 
 The table should be two columns. Each card is one row, where the left cell is the front of the flashcard and the right cell is the back. Text outside of tables is ignored.
 
