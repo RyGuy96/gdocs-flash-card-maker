@@ -1,7 +1,7 @@
 # Gdocs Flash Card Maker
 
 Accesses a docs file in your Google Drive and converts one or more tables in the document into an excel file. This file can be uploaded
-to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create). 
+to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create).
 
 The table should be two columns. Each card is one row, where the left cell is the front of the flashcard and the right cell is the back. Text outside of tables is ignored.
 
@@ -32,13 +32,13 @@ Please note, this is very sloppy at this point, with almost no error handling; I
 4. in gdocs-flash-card-maker.py set DOCUMENT_ID to the id of your Google Drive Document and PATH_TO_OUTPUT to the path of excel file to be created (include file name).
 5. Run gdocs-flash-card-maker.py (from command line cd to the directory and enter `python gdocs-flash-card-maker.py`)
 On your first run you will be asked to log into your account.
-          
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
 * [PyDrive](https://pythonhosted.org/PyDrive/quickstart.html) has wonderful documentation (partially copied above)
 * [Google API Tutorials](https://developers.google.com/docs/api/how-tos/tables) were also helpful
 * Thanks to Cram for not restricting programmatic upload of excel files. This functionality isn't (yet!) in the script, but I may add.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

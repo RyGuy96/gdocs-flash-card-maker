@@ -24,7 +24,8 @@ SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
 
 # The ID of your document (44 char string in doc url).
 DOCUMENT_ID = '1SqhlKxwm5u0MorUa-EU4GmSa8123njPSkgvXDAdKZTo'
-
+doc_id = DOCUMENT_ID
+scopes = SCOPES
 # Output file.
 PATH_TO_OUTPUT = '/Users/ryanlenea/Desktop/foo.xlsx'
 
@@ -63,6 +64,8 @@ def get_table_cells(document: dict) -> list:
     """get all values inside doc table(s)."""
 
     #TODO: make this less awful with list comp, multiple funcs, recursion etc.
+    # see tables text extacton here: https://developers.google.com/docs/api/samples/extract-text
+    # and file structure here: https://developers.google.com/docs/api/concepts/structure
 
     doc_content = document.get('body').get('content')
 
@@ -93,6 +96,94 @@ def get_table_cells(document: dict) -> list:
             all_tables += full_table
 
     return  all_tables
+#
+# def get_tables_text(document: dict):
+#     doc_content = document.get('body').get('content')
+#
+#     tables = get_tables(doc_content)
+#
+#     rows_content = []
+#     for table in tables:
+#         rows_content.append(get_rows_content(table))
+#
+#     cells_content = []
+#     for row in rows_content:
+#         cells_content.append(get_cells_content(row_content))
+#
+#     #LEFTOFFHERE this isn't working because with each funciton, it creates anotehr two elements.
+#     # tables, rows_content both have two elements, should be able to merge all the rows together, not sure why not working
+#
+#
+#
+#
+# doc_content = document.get('body').get('content')
+#
+# def get_tables(doc_content):
+#     tables = []
+#     for value in doc_content:
+#         if 'table' in value:
+#             tables.append(value.get('table'))
+#     return tables
+#
+# tables = get_tables(doc_content)
+# table = tables[0]
+#
+# def get_rows_content(tables):
+#     rows_content = []
+#     for table in tables:
+#         content = []
+#         for row in table.get('tableRows'):
+#             cells = row.get('tableCells')
+#             content.append(cells)
+#         row_content.append(content)
+#     return row_content
+#
+# rows_content = get_rows_content(table)
+# row_content = rows_content[0]
+#
+# def get_cells_content(row_content):
+#     cells_content = []
+#     for cell in row_content:
+#         cells_content.append(cell.get('content'))
+#     return cells_content
+#
+# cells = get_cells_content(row_content)
+# cell_content = cells[0]
+#
+# def get_cell_text(cell_cont):
+#     full_cell_text = ''
+#     for cont in cell_cont:
+#         elements = cont.get('paragraph')['elements']
+#
+#         for inner in elements:
+#             text = inner.get('textRun').get('content')
+#             full_cell_text += text
+#     return full_cell_text
+#
+# cell_text = get_cell_text(cell_content)
+
+
+
+
+
+https://developers.google.com/docs/api/samples/extract-text
+https://developers.google.com/docs/api/samples/extract-text
+
+# table
+#     tableRows
+#         tableCells
+#             content
+#                 paragraph
+#                     elemetents
+#                         textrun
+#                             content
+#                 paragraph
+#                     elements
+#                         textrun
+#                             content
+
+
+
 
 def make_term_list(table_elements: list) -> list:
     """convert list-of-strings to list-of-two-string-lists (term and definition)."""
