@@ -1,17 +1,13 @@
 # Gdocs Flash Card Maker
 
-Accesses a docs file in your Google Drive and converts one or more tables in the document into an excel file. This file can be uploaded
-<<<<<<< HEAD
-to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create).
-=======
-to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create)). 
->>>>>>> 73e764d89979f9dc7c9a4f6fb4736fa96d7bd9e6
+Accesses a docs file in your Google Drive and converts one or more tables in the document into an excel file. This file can be uploaded to flash card website(e.g. [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content), [Cram](https://www.cram.com/flashcards/create).
 
 The table should be two columns. Each card is one row, where the left cell is the front of the flashcard and the right cell is the back. Text outside of tables is ignored.
 
 Please note, this is very sloppy at this point, with almost no error handling; I wrote it in an afternoon with the intention of only using it myself to convert my class notes to flashcards, but am posting because of interest from others.
 
 ![pic](demo-pic.png)
+
 ## Prerequisites
 
 1. Python 3.7+
